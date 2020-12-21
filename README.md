@@ -29,3 +29,22 @@ It is a class I used to test out my code with different inputs
 Contains unit tests written to test all methods in GameStatusVerification.java
 
 	
+### Testing the code
+In the main method of Main.java class,
+
+1. Create a 2D array of 'X' and 'O' characters (or null, if no characters have been placed in a specific spot):
+
+```
+Character[][] game1 = new Character[][] {{'X', 'O', 'X'}, {'O', 'O', 'X'}, {null, null, 'X'}};
+```
+2. Instantiate a new GameStatusVerification object using the multidimensional array:
+```
+GameStatusVerification ver1= new GameStatusVerification(game1);
+```
+3. Print the current status of the game by calling `checkState`:
+```
+System.out.println(ver1.checkState());
+```
+
+4. Run.
+
