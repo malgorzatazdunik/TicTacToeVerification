@@ -10,7 +10,7 @@ public class GameStatusVerification {
 	
 	
 	/*
-	 *  the constructor takes in the current state of the game as
+	 *  The constructor takes in the current state of the game as
 	 *  a multidimensional (2D) array (matrix 3x3)
 	 *  
 	 *  This code checks if any the users placing X's and O's won; It should be called everytime after a user has placed a sign on the grid
@@ -24,7 +24,7 @@ public class GameStatusVerification {
 	}
 	
 	
-	// boolean to check if the input matrix is valid
+	// Boolean to check if the input matrix is valid
 	boolean checkValidInput()
 	{
 		if (currentGame == null) {
@@ -49,27 +49,27 @@ public class GameStatusVerification {
 	
 	String checkState()
 	{
-		// check if X or O won
-		// if they haven't, check if the grid is filled
-		// if it is filled, it's a draw
-		// if it isn't, the game hasn't finished yet
 		
-		// it doesn't matter what the characters in the grid are, it's only checked whether they are X's, O's, or null
+
 		if (validInput)
 		{
+			// Check if X or O won
 			if (hasWon('X')) return "X won";
 			if (hasWon('O')) return "O won";
 			
+			// if they haven't, check if the grid is filled
 			for (int i =0; i < 3; i++)
 			{
 				for (int j = 0; j < 3; j++)
 				{
 					if (currentGame[i][j] == null)
 					{
+						// if the grid isn't filled, the game hasn't finished yet
 						return "Game in progress";
 					}
 				}
 			}
+			// if it is filled, it's a draw
 			return "It's a draw";			
 		}
 		else return "Invalid Input";
@@ -80,6 +80,12 @@ public class GameStatusVerification {
 	{
 		
 		boolean won = true;
+		
+		/*
+		 * (It doesn't matter what the characters in the grid are, it's only checked whether they are X's, O's, or null 
+		 * - if the signs placed are anything different than X or O or null, the grid is being filled, but none of the players win (a draw),
+		 * as long as there are no rows/columns/diagonals with all 3 X's or O's
+		 */
 		
 		// rows
 		for (int i = 0; i < 3; i++)
@@ -112,9 +118,11 @@ public class GameStatusVerification {
 		}
 		
 		// diagonals
+		
+		won = true;
 		for (int i = 0; i < 3; i++)
 		{
-			won = true;
+			
 
 			if (currentGame[i][i] != sign)
 			{
@@ -125,15 +133,17 @@ public class GameStatusVerification {
 		
 		if (won) return true;
 		
+		won = true;
+		
+		int i =0;
 		for (int j = 2; j >= 0; j--)
 		{
-			won = true;
-			
-			if(currentGame[j][j] != sign)
+			if(currentGame[j][i] != sign)
 			{
 				won = false;
 				break;
 			}
+			i++;
 		}
 		
 		if (won) return true;

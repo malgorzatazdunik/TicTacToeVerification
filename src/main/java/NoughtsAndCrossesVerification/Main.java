@@ -5,11 +5,16 @@ public class Main {
 	public static void main (String[] args)
 	{
 		
+		/*
+		 * Main class to test out the code
+		 */
+		
 		Character[][] game1 = new Character[][] {{'X', 'O', 'X'}, {'O', 'O', 'X'}, {null, null, 'X'}};
-		Character[][] game2 = new Character[][] {{'X', 'O', 'O'}, {'O', 'X', 'O'}, {'O','O', 'X'}};
-		Character[][] game3 = new Character[][] {{},{},{}};
-		Character[][] game4 = new Character[][] {{null, null, null}, {null, null, null}, {null, null, null}};
-		Character[][] game5 = new Character[][] {{'X', '7', 'X'}, {'O', 'X', 'O'}, {'O', 'O', 'O'}};
+		Character[][] game2 = new Character[][] {{'X', 'O', 'O'}, {'X', 'O', 'X'}, {'O','X', 'X'}};
+		Character[][] game3 = new Character[][] {{null, null, null},{'X', 'O', null},{null, null, null}};
+		Character[][] game4 = new Character[][] {{'O', 'X', 'X'}, {'X', 'O', 'O'}, {'X', 'O', 'X'}};
+
+		
 		GameStatusVerification ver1= new GameStatusVerification(game1);
 		System.out.println(ver1.checkState());
 		
@@ -22,8 +27,7 @@ public class Main {
 		GameStatusVerification ver4= new GameStatusVerification(game4);
 		System.out.println(ver4.checkState());
 		
-		GameStatusVerification ver5= new GameStatusVerification(game5);
-		System.out.println(ver5.checkState());
+		
 		
 	}
 
